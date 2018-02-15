@@ -1,0 +1,33 @@
+2.1
+addi $t0, h, -5
+add  f,  $t0, g
+
+2.3
+sub $t0, $s3, $s4
+sll $t0, $t0, 2
+add $t0, $s6, $t0
+lw  $t0, 0($t0)
+sw  $t0, 32($s7)
+
+2.4
+sll  $t0, $s0, 2 	# $t0 = f * 4
+add  $t0, $s6, $t0 	# $t0 = &A[f]
+sll  $t1, $s1, 2 	# $t1 = g * 4
+add  $t1, $s7, $t1 	# $t1 = &B[g]
+lw   $s0, 0($t0) 	# f = A[f]
+addi $t2, $t0, 4	# $t2 = &A[f+1]
+lw   $t0, 0($t2)	# $t0 = A[f+1]
+add  $t0, $t0, $s0	# $t0 = A[f+1]+A[f]
+sw   $t0, 0($t1)	# B[g] = A[f+1]+A[f]
+
+B[g] = A[f+1]+A[f];
+
+2.5
+sll  $t0, $s0, 2 	
+add  $t0, $s6, $t0 	
+sll  $t1, $s1, 2 	
+add  $t1, $s7, $t1 	
+lw   $s0, 0($t0) 	
+lw   $t0, 4($t0)	
+add  $t0, $t0, $s0	
+sw   $t0, 0($t1)	

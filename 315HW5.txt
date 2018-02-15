@@ -1,0 +1,34 @@
+0.7 0.1 0.2
+2.47.1
+CPI_1 = 2*0.7+6*0.1+3*0.2=2.6
+
+2.47.2
+performance = 1/exec time
+
+exec time = CPUclockcycles * clock cycle time
+          = CPUclockcycles/clock rate
+
+CPUclockcycles = I * (Ave)CPI
+
+P_2/P_1 = 5/4
+P_1 = 1/(I*CPI_1*Clock cycle time)
+P_2 = 1/(I*CPI_2*Clock cycle time)
+CPI_2 = 4*(CPI_1)/5
+CPI_2 = 4*2.6/5 = 2.08
+CPI_2 = (2-dec)*0.7+6*0.1+3*0.2 = 2.08
+2-dec = 1.257142857142857 = 1.26
+On average, 1.26 cycles may an arithmetic instruction take if load/store and branch instructions are not improved at all.
+
+2.47.3
+P_2/P_1 = 3/2
+CPI_2 = 2*(CPI_1)/3
+      = 2*2.6/3 = 1.7333333333
+CPI_2 = (2-dec)*0.7+6*0.1+3*0.2 = 1.73333333333
+2-dec = 0.7619047619047619 = 0.76
+On average, 0.76 cycles may an arithmetic instruction take if load/store and branch insturctions are not improved at all.
+
+
+
+
+
+

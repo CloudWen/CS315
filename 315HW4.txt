@@ -1,0 +1,61 @@
+2.12.1&2.12.2
+    The desired value of $t0 should be 0001 0101 0000 0000 0000 0000 0000 0000 0000 _2       5,637,144,576 _10  
+    But there has been overflow. So the result in $t0 is not the desired result.
+
+2.12.3&2.12.4
+    The desired value of $t0 should be 1111 1111 ... 1111 1011 0000 0000 0000 0000 0000 0000 0000  _2     -1,342,177,280  _10
+    There has not been overflow. But the result in $t0 is not the desired result, since the sign bits 1111 are lost. 
+
+2.12.5&2.12.6
+    The desired value of $t0 should be 0001 1101 0000 0000 0000 0000 0000 0000 0000  _2      7,784,628,224  _10
+    But there has been overflow. So the result in $t0 is not the desired result.
+
+
+2.23
+    The value of $t2 after the instructions is 3
+
+2.26.1
+    The value in register $s2 is 20
+
+2.26.2
+    int B = 0;
+    int i = 10;
+    while( 0 < i ){
+          i--;
+          B = B + 2;
+     }
+
+
+2.26.3
+    2+5N
+
+
+
+2.27
+
+       addi $t0, $0, 0
+LOOP1: addi $t1, $0, 0
+       beq  $t0, $s0, DONE
+LOOP2: beq  $t1, $s1, DONE
+DO:    sll  $t2, $t1, 4
+       add  $t2, $s2, $t2
+       add  $t3, $t0, $t1
+       sw   $t3, 0($t2)
+       addi $t1, $t1, 1
+       bne  $t1, $s1, LOOP2
+       bne  $t0, $s0,  LOOP1
+DONE:
+
+
+
+2.29
+     int i = 0;
+     int result = 0;
+     while ( i < 100 ){
+          result = result + MemArray[i];
+          i = i + 1;
+          }
+     
+
+
+

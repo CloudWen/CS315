@@ -1,0 +1,66 @@
+5.3.1
+tag = 22 bits= 32-(n+m)
+index = 5 bits = n
+offset = 5 bits = m
+
+2^5/4 = 8 words.
+
+5.3.2
+2^n = 2^5 = 32.
+
+5.3.3
+[2^5*(2^8+23)]/(2^5*2^8) = 1.090.
+
+5.3.4
+4 blocks are replaced.
+
+5.3.5
+4/12 = 0.33
+
+5.3.6
+<00000,(0000 0000 0000 0000 0000 11), Mem(3100)>
+<00100,(0000 0000 0000 0000 0000 10), Mem(2180)>
+<00111,(0000 0000 0000 0000 0000 00), Mem(232)>
+<00101,(0000 0000 0000 0000 0000 00), Mem(16)>
+
+5.5.1
+Miss rate:1/16 = 0.0625. The miss rate is not sensitive to the size of the cache or the size of the working set.
+
+5.5.2
+Miss rate for 16 bytes cache block size: 1/8 = 0.125
+Miss rate for 64 bytes cache block size: 1/32 = 0.03125
+Miss rate for 128 bytes cache block size: 1/64 = 0.015625
+
+5.5.3
+0.
+
+5.5.4
+B=8: 0.04*(20*8) = 6.4
+B=16: 0.03*(20*16)=9.6
+B=32: 0.02*(20*32) = 12.8
+B=64: 0.015*(20*64) = 19.2
+B=128: 0.01*(20*128)= 25.6
+Thus, B=8 is optimal
+
+5.5.5
+B=8: 0.04*(24+8) = 1.28
+B=16:0.03*(24+16) = 1.2
+B=32:0.02*(24+32) = 1.12
+B=64:0.015*(24+64) = 1.32
+B=128:0.01*(24+128) = 1.52
+Thus, B=32 is optimal.
+
+5.5.6
+As 5.5.2 shown, B = 128 is the optimal block size.
+
+5.7.1
+
+5.7.2
+
+5.7.3
+
+5.7.4
+
+5.7.5
+
+5.7.6

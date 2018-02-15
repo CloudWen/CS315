@@ -1,0 +1,66 @@
+4.1.1
+AND is an ALU Operation, so:
+BSrc will look to register
+OpSel will tell ALU to AND
+MemW is false, we do not touch memory
+RegW is true, we are writing back to register Rd
+WBSrc is will set to use output from ALU as data
+RegDst is Rd
+PCSrc is PC + 4 since no jumps occur
+
+4.1.2
+PC, instruction memory, ALU, Mux, Registers
+
+
+4.1.3
+Branch, data memory
+
+4.4.1
+200ps. 
+
+4.4.2
+200+15+10+70+20=315ps
+
+4.4.3
+200+90+20+90+20=420ps
+
+4.4.4
+PC-relative branches
+
+4.4.5
+PC-relative unconditional branch instructions.
+
+4.4.6
+bne has a longer critical path, so it determines the clock cycle time.
+Since this unit is not on the critical path, the only way for it to become critical is to increase its latency by 105ps or more for it to affect clock cycle time.
+
+4.7.1
+Sign-extend:00000000000000000000000000010100
+Jump Shift-left-2 :0001100010000000000001010000
+
+4.7.2
+ALUOp:00
+Instruction:010100
+
+4.7.3
+New PC:PC+4
+Path: PC to Add(PC+4) to branch Mux to jump Mux to PC
+
+4.7.4
+WrReg Mux:2 or 0(RegDst is X)
+ALU Mux: 20
+Mem/ALU Mux: X
+Branch Mux: PC+4
+Jump Mux: PC+4
+
+4.7.5
+ALU: -3 and 20
+Add(PC+4): PC and 4
+Add(Branch): PC+4 and 20*4
+
+4.7.6
+Read Register1: 3
+Read Register2: 2
+Write Register: X
+Write Data: X
+RegWrite: 0

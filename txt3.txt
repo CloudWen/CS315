@@ -1,0 +1,11 @@
+C:
+char *p, *q;
+while((*q++ =*p++)!='\0');
+
+Assemby(MIPS)
+p->$s0 #pointer address of p
+q->$s1 #pointer address of q
+Loop:
+lb $t0, 0($s0)
+sb $t0, 0($s0)
+add:$s0, $s0, 1

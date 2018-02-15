@@ -1,0 +1,88 @@
+4.9.1
+Read after write hazard on R1 from first instruction to second and third.
+Read after wirte hazard on R2 from second instruction to third.
+Write after read on R2 from first insturction to second.
+Write after read on R1 from second instuction to third.
+Write after write on R1 from first instruction to third.
+
+4.9.2
+or r1, r2, r3
+nop
+nop
+or r2, r1, r4	Delay second instruction to avoid read after write hazard on R1 from first instruction
+nop
+nop
+or r1, r1, r2   Delay third instruction to avoid read after write hazard on R2 from second instruction. 
+
+
+4.9.3
+or r1, r2, r3
+or r2, r1, r4   No read after write hazard due to the forwarding
+or r1, r1, r2	No read after write hazard due to the forwarding
+
+4.9.4
+No forwarding: (7+4)*250ps = 2750ps
+With full forwarding: 7*300ps = 2100ps
+Speed up: 2750ps/2100ps = 1.31
+
+4.9.5
+or r1, r2, r3
+or r2, r1, r4	ALU-ALU forwarding of R1 from first instruction
+or r1, r1, r2	ALU-ALU forwarding of R2 from second instruction
+
+4.9.6
+No forwarding: (7+4)*250ps = 2750ps
+With ALU-ALU forwarding only: 7*290ps = 2030ps
+Speed up: 2750ps/2030ps = 1.35
+
+4.13.1
+add r5, r2, r1
+nop
+nop
+lw  r3, 4(r5)
+lw  r2, 0(r2)
+nop
+or  r3, r5, r3
+nop
+nop
+sw  r3, 0(r5)
+
+4.13.2
+add r5, r2, r1
+lw  r2, 0(r2)
+nop
+lw  r3, 4(r5)
+nop
+nop
+or  r3, r5, r3
+nop
+nop
+sw  r3, 0(r5)
+
+4.13.3
+The instruction that depends on the immediately preceding load will gets the stale value the register had before the load instruction.
+
+4.13.4
+add r5, r2, r1		PCWrite = 1,  ALUin1=X, ALUin2 = X
+lw  r3, 4(r5)		PCWrite = 1,  ALUin1=X, ALUin2 = X
+lw  r2, 0(r2)		PCWrite = 1,  ALUin1=0, ALUin2 = 0
+or  r3, r5, r3		PCWrite = 1,  ALUin1=1, ALUin2 = 0
+sw  r3, 0(r5)		PCWrite = 1,  ALUin1=0, ALUin2 = 0
+
+5.1.1
+4
+
+5.1.2
+i,j
+
+5.1.3
+A[i][j]
+
+5.1.4
+(8*8000-8*8+8000*8+8)/4 = 31986
+
+5.1.5
+i,j
+
+5.1.6
+i,j

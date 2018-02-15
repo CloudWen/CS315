@@ -1,0 +1,61 @@
+C code
+
+swap(int *V, int k){
+	int temp;
+	temp = V[k];
+	V[k] = V[k+1];
+	V[k+1] = temp;
+}
+
+
+to make it "stol"	(Assume reg 5 : $2 = k, reg 4 : address of V)
+
+.text
+.global swap
+
+swap:
+	subu	$SP, $sp, 4 	#make a room on stack
+	sw 	$ra, 0($sp) 	#save return address
+	
+	mult:	$2, $5, 4	#calculate bytes into V array
+	add	$2, $4, $2	#addr V[k]
+	lw	$16, 4($2)	#load V[k+1] in reg16
+	lw	$15, 0($2)	#load V[k] in reg15
+	sw	$16, 0($2)	#store reg16 in V[k]
+	sw	$15, 4($2)	#store reg 15 in V[k+1]
+
+
+define memory:
+
+.data
+	query	.ascii	"Input"
+	x	.word	20
+	array1	.byte	"a"
+	array2	.	40
+
+
+
+Benchmarking computers
+
+Perfomance = 1/executingtime
+
+execution time = # of clock cycle/clock rate
+
+or define CPI = clock cycle/instructs
+
+CPU time = instructs count * CPI / clock rate
+
+
+
+4GHz = 4*10^9 1/s = 250ps = 250*10^-12 sve
+
+For example (book)
+
+		A		B
+Clock freq	4GHz(250ps)	2GHz(500ps)
+CPI(cycle/inst)	2cycle/inst	1.2cycle/inst
+	which is faster?
+
+CPU Perf 	I*2/4GHz	I*1.2/2GHz	CPU A/CPU B = 4/4.8 so CPU A is 1.2* faster than CPU B
+
+Power limit how fast CPU can go > multicore > parallel process to improve.
